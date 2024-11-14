@@ -5,7 +5,8 @@ export const generateToken = (user: any, jwtService: JwtService) => {
     _id: user._id,
     username: user.username,
     name: user.name,
-    role: user.role,
+    bio: user.bio ? user.bio : undefined,
+    role: user.role ? user.role : undefined,
     profilePicture: user.profilePicture,
   };
 

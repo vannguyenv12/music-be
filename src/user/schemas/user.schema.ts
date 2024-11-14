@@ -15,6 +15,9 @@ export class User extends Document {
   @Prop()
   profilePicture: string;
 
+  @Prop({ default: 'MY_SYSTEM' })
+  provider: string;
+
   @Prop({ type: [{ type: Types.ObjectId, ref: 'Playlist' }] })
   playlists: Types.ObjectId[];
 

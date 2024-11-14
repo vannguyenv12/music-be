@@ -8,6 +8,8 @@ export class ResponseUserDto {
   @Expose()
   name: string;
   @Expose()
+  bio: string;
+  @Expose()
   role: string;
   @Expose()
   profilePicture: string;
