@@ -6,6 +6,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { ClassConstructor, plainToInstance } from 'class-transformer';
+import mongoose, { Types } from 'mongoose';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 

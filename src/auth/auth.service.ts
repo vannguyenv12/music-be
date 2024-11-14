@@ -1,11 +1,10 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { generateToken } from 'src/_utils/token.utils';
 import { UserService } from 'src/user/user.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { SignInAuthDto } from './dto/sign-in-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
-import { generateToken } from 'src/_utils/token.utils';
 
 @Injectable()
 export class AuthService {
@@ -33,21 +32,5 @@ export class AuthService {
     return {
       accessToken: await generateToken(user, this.jwtService),
     };
-  }
-
-  findAll() {
-    return `This action returns all auth`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
-
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
   }
 }
