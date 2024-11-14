@@ -1,17 +1,23 @@
 import {
-  Controller,
-  Get,
-  Post,
+  BadRequestException,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
-import { SongService } from './song.service';
-import { CreateSongDto } from './dto/create-song.dto';
-import { UpdateSongDto } from './dto/update-song.dto';
 import { TransformDTO } from 'src/_core/interceptors/transform-dto.interceptor';
+import { AudioUploadDto } from './dto/audio-upload.dto';
+import { CreateSongDto } from './dto/create-song.dto';
 import { ResponseSongDto } from './dto/response-song.dto';
+import { UpdateSongDto } from './dto/update-song.dto';
+import { AudioFileInterceptor } from './interceptors/upload-audio.interceptor';
+import { SongService } from './song.service';
+import getAudioDurationInSeconds from 'get-audio-duration';
 
 @Controller('songs')
 @TransformDTO(ResponseSongDto)
@@ -41,5 +47,25 @@ export class SongController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.songService.remove(id);
+  }
+
+  @Post('upload-audio')
+  @UseInterceptors(AudioFileInterceptor)
+  async uploadAudioFile(
+    @UploadedFile() audioFile: Express.Multer.File,
+    @Body() audioUploadDto: AudioUploadDto,
+  ) {
+    if (!audioFile) {
+      throw new BadRequestException('Only mp3 files are allowed');
+    }
+
+    const filePath = `./uploads/audio/${audioFile.filename}`;
+    const duration = await getAudioDurationInSeconds(filePath);
+
+    return this.songService.updateAudioFile(
+      audioUploadDto.songId,
+      audioFile.path,
+      duration,
+    );
   }
 }

@@ -20,20 +20,14 @@ export class Song {
   @Prop({ default: 0 })
   duration: number; // Duration in seconds
 
-  @Prop({ default: '' })
+  @Prop()
   audioFile: string;
 
-  @Prop({ default: '' })
+  @Prop()
   coverImage: string;
 
   @Prop()
   releaseDate: Date;
-
-  @Prop({ default: 0 })
-  playCount: number;
-
-  @Prop({ default: 0 })
-  likes: number;
 }
 
 export const SongSchema = SchemaFactory.createForClass(Song);

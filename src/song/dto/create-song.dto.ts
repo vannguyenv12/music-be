@@ -27,6 +27,7 @@ export class CreateSongDto {
   @IsNumber()
   duration?: number;
 
+  @IsOptional()
   @IsString()
   audioFile: string;
 
