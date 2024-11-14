@@ -21,4 +21,6 @@ export class ResponseSongDto {
   coverImage?: string;
   @Expose()
   releaseDate?: Date;
+  @Expose()
+  slug: string;
 }

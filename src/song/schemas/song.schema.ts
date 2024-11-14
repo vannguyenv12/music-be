@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
+import slugify from 'slugify';
 
 export type SongDocument = HydratedDocument<Song>;
 
@@ -28,6 +29,25 @@ export class Song {
 
   @Prop()
   releaseDate: Date;
+
+  @Prop({ unique: true })
+  slug: string;
 }
 
 export const SongSchema = SchemaFactory.createForClass(Song);
+
+SongSchema.pre('save', async function (next) {
+  if (this.title) {
+    let generatedSlug = slugify(this.title, { lower: true, strict: true });
+
+    const existingSong = await this.model('Song').findOne({
+      slug: generatedSlug,
+    });
+    if (existingSong) {
+      generatedSlug = `${generatedSlug}-${Math.floor(Math.random() * 1000)}`;
+    }
+
+    this.slug = generatedSlug;
+  }
+  next();
+});
