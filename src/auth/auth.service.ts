@@ -5,6 +5,7 @@ import { UserService } from 'src/user/user.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { SignInAuthDto } from './dto/sign-in-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
+import { generateToken } from 'src/_utils/token.utils';
 
 @Injectable()
 export class AuthService {
@@ -16,10 +17,8 @@ export class AuthService {
   async create(createAuthDto: CreateAuthDto) {
     const user = await this.userService.create(createAuthDto);
 
-    const payload = { _id: user._id, username: user.username, role: user.role };
-
     return {
-      accessToken: await this.jwtService.signAsync(payload),
+      accessToken: await generateToken(user, this.jwtService),
     };
   }
 
@@ -31,14 +30,8 @@ export class AuthService {
     const isMatch = await bcrypt.compare(signInAuth.password, user.password);
     if (!isMatch) throw new BadRequestException('Bad Credentials');
 
-    const payload = {
-      _id: user._id,
-      username: user.username,
-      role: user.role,
-    };
-
     return {
-      accessToken: await this.jwtService.signAsync(payload),
+      accessToken: await generateToken(user, this.jwtService),
     };
   }
 

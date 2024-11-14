@@ -6,14 +6,18 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { TransformDTO } from 'src/_core/interceptors/transform-dto.interceptor';
 import { ResponseUserDto } from './dto/response-user.dto';
+import { AuthGuard } from 'src/_core/guards/auth.guard';
+import { CurrentUser } from 'src/_core/decorators/current-user.decorator';
 
 @Controller('users')
+@UseGuards(AuthGuard)
 @TransformDTO(ResponseUserDto)
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -26,6 +30,11 @@ export class UserController {
   @Get()
   findAll() {
     return this.userService.findAll();
+  }
+
+  @Get('/me')
+  getMe(@CurrentUser() user) {
+    return user;
   }
 
   @Get(':id')
