@@ -15,6 +15,8 @@ import { TransformDTO } from 'src/_core/interceptors/transform-dto.interceptor';
 import { ResponseUserDto } from './dto/response-user.dto';
 import { AuthGuard } from 'src/_core/guards/auth.guard';
 import { CurrentUser } from 'src/_core/decorators/current-user.decorator';
+import { LikeSongDto } from './dto/like-song.dto';
+import { FollowArtistDto } from './dto/follow-artist.dto';
 
 @Controller('users')
 @UseGuards(AuthGuard)
@@ -50,5 +52,34 @@ export class UserController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.userService.remove(+id);
+  }
+
+  @Post('like-song')
+  async likeSong(@Body() likeSongDto: LikeSongDto, @CurrentUser() user) {
+    return this.userService.likeSong(user._id, likeSongDto.songId);
+  }
+
+  @Post('follow-artist')
+  async followArtist(
+    @Body() followArtistDto: FollowArtistDto,
+    @CurrentUser() user,
+  ) {
+    return this.userService.followArtist(user._id, followArtistDto.artistId);
+  }
+
+  @Post('unlike-song')
+  async unlikeSong(@Body() unlikeSongDto: LikeSongDto, @CurrentUser() user) {
+    return this.userService.unlikeSong(user._id, unlikeSongDto.songId);
+  }
+
+  @Post('unfollow-artist')
+  async unfollowArtist(
+    @Body() unfollowArtistDto: FollowArtistDto,
+    @CurrentUser() user,
+  ) {
+    return this.userService.unfollowArtist(
+      user._id,
+      unfollowArtistDto.artistId,
+    );
   }
 }

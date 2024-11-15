@@ -1,5 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
+import { Artist } from 'src/artist/schemas/artist.schema';
+import { Song } from 'src/song/schemas/song.schema';
 
 @Schema({ timestamps: true })
 export class User extends Document {
@@ -17,6 +19,12 @@ export class User extends Document {
 
   @Prop({ default: 'MY_SYSTEM' })
   provider: string;
+
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Song' }] })
+  likedSongs: Song[];
+
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artist' }] })
+  followedArtists: Artist[];
 
   @Prop({ default: 'user' })
   role: 'admin' | 'user';
