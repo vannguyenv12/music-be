@@ -40,7 +40,7 @@ export class PlaylistService {
   }
 
   // Find a single playlist by id
-  async findOne(id: string): Promise<Playlist> {
+  async findOne(id: string) {
     const playlist = await this.playlistModel
       .findById(id)
       .populate('creator')

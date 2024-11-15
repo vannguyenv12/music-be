@@ -21,9 +21,6 @@ export class Album {
 
   @Prop()
   releaseDate: Date;
-
-  @Prop()
-  genre: string;
 }
 
 export const AlbumSchema = SchemaFactory.createForClass(Album);

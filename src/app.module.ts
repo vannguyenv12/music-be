@@ -10,6 +10,7 @@ import { ArtistModule } from './artist/artist.module';
 import { AlbumModule } from './album/album.module';
 import { PlaylistModule } from './playlist/playlist.module';
 import { GenreModule } from './genre/genre.module';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { GenreModule } from './genre/genre.module';
     AlbumModule,
     PlaylistModule,
     GenreModule,
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

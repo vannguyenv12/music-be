@@ -8,9 +8,6 @@ export type PlaylistDocument = HydratedDocument<Playlist>;
 
 @Schema({ timestamps: true })
 export class Playlist {
-  save(): Playlist | PromiseLike<Playlist> {
-    throw new Error('Method not implemented.');
-  }
   @Prop({ required: true })
   title: string;
 

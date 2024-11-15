@@ -7,7 +7,4 @@ export class UpdateAlbumDto {
   @IsOptional()
   @IsDateString()
   releaseDate?: Date;
-  @IsOptional()
-  @IsString()
-  genre?: string;
 }

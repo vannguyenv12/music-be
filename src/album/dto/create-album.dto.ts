@@ -15,8 +15,4 @@ export class CreateAlbumDto {
   @IsOptional()
   @IsDateString()
   releaseDate?: Date;
-
-  @IsOptional()
-  @IsString()
-  genre?: string;
 }

@@ -24,9 +24,6 @@ export class ResponseAlbumDto {
   releaseDate?: Date;
 
   @Expose()
-  genre?: string;
-
-  @Expose()
   @Transform(({ obj }) => obj?.artist?.name)
   artistName: string;
 
