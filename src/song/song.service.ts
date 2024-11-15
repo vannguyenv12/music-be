@@ -9,6 +9,9 @@ import getAudioDurationInSeconds from 'get-audio-duration';
 @Injectable()
 export class SongService {
   constructor(@InjectModel(Song.name) private songModel: Model<Song>) {}
+  async findSongsByIds(songIds: string[]): Promise<Song[]> {
+    return this.songModel.find({ _id: { $in: songIds } }).exec();
+  }
 
   async create(createSongDto: CreateSongDto): Promise<Song> {
     const newSong = new this.songModel(createSongDto);

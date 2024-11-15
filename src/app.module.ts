@@ -8,6 +8,7 @@ import { UserModule } from './user/user.module';
 import { SongModule } from './song/song.module';
 import { ArtistModule } from './artist/artist.module';
 import { AlbumModule } from './album/album.module';
+import { PlaylistModule } from './playlist/playlist.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AlbumModule } from './album/album.module';
     SongModule,
     ArtistModule,
     AlbumModule,
+    PlaylistModule,
   ],
   controllers: [AppController],
   providers: [AppService],

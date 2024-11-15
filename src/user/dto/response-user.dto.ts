@@ -13,10 +13,4 @@ export class ResponseUserDto {
   role: string;
   @Expose()
   profilePicture: string;
-  @Expose()
-  playlists: string;
-  @Expose()
-  favorites: string;
-  @Expose()
-  followedArtists: string;
 }
