@@ -11,6 +11,8 @@ import { AlbumModule } from './album/album.module';
 import { PlaylistModule } from './playlist/playlist.module';
 import { GenreModule } from './genre/genre.module';
 import { CommentModule } from './comment/comment.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -21,6 +23,9 @@ import { CommentModule } from './comment/comment.module';
         uri: configService.get<string>('MONGODB_URL'),
       }),
       inject: [ConfigService],
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
     }),
 
     UserModule,

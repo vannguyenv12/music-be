@@ -11,6 +11,9 @@ export class Genre {
   @Prop()
   description: string;
 
+  @Prop()
+  coverImage: string; // generate by client
+
   @Prop({ default: false })
   isDelete: boolean;
 }
