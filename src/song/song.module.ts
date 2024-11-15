@@ -10,5 +10,6 @@ import { Song, SongSchema } from './schemas/song.schema';
   ],
   controllers: [SongController],
   providers: [SongService],
+  exports: [SongService],
 })
 export class SongModule {}
