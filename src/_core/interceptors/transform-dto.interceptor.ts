@@ -28,10 +28,10 @@ export class TransformDTOInterceptor<T> implements NestInterceptor {
               excludeExtraneousValues: true,
             }),
             pagination: {
-              itemsPerPage: data.meta.itemsPerPage,
-              totalItems: data.meta.totalItems,
-              currentPage: data.meta.currentPage,
-              totalPages: data.meta.totalPages,
+              total: data.total,
+              currentPage: data.currentPage,
+              totalPages: data.totalPages,
+              hasMore: data.hasMore,
             },
           };
         }

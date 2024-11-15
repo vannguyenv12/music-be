@@ -7,6 +7,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
@@ -31,8 +32,19 @@ export class SongController {
   }
 
   @Get()
-  findAll() {
-    return this.songService.findAll();
+  async findAll(@Query('page') page: string, @Query('limit') limit: string) {
+    const pageNum = parseInt(page, 10) || 1;
+    const limitNum = parseInt(limit, 10) || 6;
+
+    const result = await this.songService.findAll(pageNum, limitNum);
+
+    return {
+      data: result.data,
+      total: result.total,
+      currentPage: pageNum,
+      totalPages: Math.ceil(result.total / limitNum),
+      hasMore: result.hasMore,
+    };
   }
 
   @Get(':id')
