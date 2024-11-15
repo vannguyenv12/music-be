@@ -6,12 +6,19 @@ import {
   Patch,
   Param,
   Delete,
+  UseInterceptors,
+  UploadedFile,
+  BadRequestException,
+  UseGuards,
 } from '@nestjs/common';
 import { ArtistService } from './artist.service';
 import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
 import { TransformDTO } from 'src/_core/interceptors/transform-dto.interceptor';
 import { ResponseArtistDto } from './dto/artist-response.dto';
+import { UserProfilePictureInterceptor } from 'src/user/interceptors/user-avatar.interceptor';
+import { CurrentUser } from 'src/_core/decorators/current-user.decorator';
+import { AuthGuard } from 'src/_core/guards/auth.guard';
 
 @Controller('artists')
 @TransformDTO(ResponseArtistDto)
@@ -46,5 +53,20 @@ export class ArtistController {
   @Get(':artistId/follows')
   async getArtistFollowCount(@Param('artistId') artistId: string) {
     return this.artistService.getArtistFollowCount(artistId);
+  }
+
+  @Post('upload-profile-picture')
+  @UseInterceptors(UserProfilePictureInterceptor)
+  @UseGuards(AuthGuard)
+  async uploadProfilePicture(
+    @UploadedFile() file: Express.Multer.File,
+    @CurrentUser() user,
+  ) {
+    if (!file) {
+      throw new BadRequestException(
+        'Invalid file format. Only JPEG and PNG are allowed.',
+      );
+    }
+    return this.artistService.uploadProfilePicture(file.filename, user);
   }
 }

@@ -1,13 +1,15 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model, Types } from 'mongoose';
-import { Artist, ArtistDocument } from './schemas/artist.schema';
+import * as bcrypt from 'bcrypt';
+import { Model } from 'mongoose';
+import { User } from 'src/user/schemas/user.schema';
 import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
-import { NotFoundException } from '@nestjs/common';
-import { CreateUserDto } from 'src/user/dto/create-user.dto';
-import * as bcrypt from 'bcrypt';
-import { User } from 'src/user/schemas/user.schema';
+import { Artist, ArtistDocument } from './schemas/artist.schema';
 
 @Injectable()
 export class ArtistService {
@@ -40,7 +42,7 @@ export class ArtistService {
     return this.artistModel.find().exec();
   }
 
-  async findOne(id: string): Promise<Artist> {
+  async findOne(id: string) {
     const artist = await this.artistModel.findById(id).exec();
     if (!artist) {
       throw new NotFoundException('Artist not found');
@@ -71,5 +73,13 @@ export class ArtistService {
     });
 
     return users.length;
+  }
+
+  async uploadProfilePicture(fileName: string, currentUser) {
+    const user = await this.findOne(currentUser._id);
+
+    user.profilePicture = fileName;
+
+    return user.save();
   }
 }
