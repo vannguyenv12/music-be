@@ -164,4 +164,12 @@ export class UserService {
     user.followedArtists.splice(artistIndex, 1);
     return user.save();
   }
+
+  async uploadProfilePicture(fileName: string, currentUser) {
+    const user = await this.findOne(currentUser._id);
+
+    user.profilePicture = fileName;
+
+    return user.save();
+  }
 }

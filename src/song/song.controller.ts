@@ -64,7 +64,7 @@ export class SongController {
 
     return this.songService.updateAudioFile(
       audioUploadDto.songId,
-      audioFile.path,
+      audioFile.filename,
       duration,
     );
   }

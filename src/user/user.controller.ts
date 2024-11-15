@@ -7,6 +7,9 @@ import {
   Param,
   Delete,
   UseGuards,
+  UseInterceptors,
+  UploadedFile,
+  BadRequestException,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -17,6 +20,7 @@ import { AuthGuard } from 'src/_core/guards/auth.guard';
 import { CurrentUser } from 'src/_core/decorators/current-user.decorator';
 import { LikeSongDto } from './dto/like-song.dto';
 import { FollowArtistDto } from './dto/follow-artist.dto';
+import { UserProfilePictureInterceptor } from './interceptors/user-avatar.interceptor';
 
 @Controller('users')
 @UseGuards(AuthGuard)
@@ -81,5 +85,19 @@ export class UserController {
       user._id,
       unfollowArtistDto.artistId,
     );
+  }
+
+  @Post('upload-profile-picture')
+  @UseInterceptors(UserProfilePictureInterceptor)
+  async uploadProfilePicture(
+    @UploadedFile() file: Express.Multer.File,
+    @CurrentUser() user,
+  ) {
+    if (!file) {
+      throw new BadRequestException(
+        'Invalid file format. Only JPEG and PNG are allowed.',
+      );
+    }
+    return this.userService.uploadProfilePicture(file.filename, user);
   }
 }
