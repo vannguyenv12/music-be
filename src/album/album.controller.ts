@@ -1,22 +1,21 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Put,
-  Param,
+  Controller,
   Delete,
-  UseGuards,
+  Get,
+  Param,
   Patch,
+  Post,
+  UseGuards,
 } from '@nestjs/common';
-import { AlbumService } from './album.service';
-import { CreateAlbumDto } from './dto/create-album.dto';
-import { UpdateAlbumDto } from './dto/update-album.dto';
-import { Album } from './schemas/album.schema';
 import { CurrentUser } from 'src/_core/decorators/current-user.decorator';
 import { AuthGuard } from 'src/_core/guards/auth.guard';
 import { TransformDTO } from 'src/_core/interceptors/transform-dto.interceptor';
+import { AlbumService } from './album.service';
+import { CreateAlbumDto } from './dto/create-album.dto';
 import { ResponseAlbumDto } from './dto/response-album.dto';
+import { UpdateAlbumDto } from './dto/update-album.dto';
+import { Album } from './schemas/album.schema';
 
 @Controller('albums')
 @TransformDTO(ResponseAlbumDto)

@@ -1,11 +1,10 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { SongService } from 'src/song/song.service';
 import { CreateAlbumDto } from './dto/create-album.dto';
 import { UpdateAlbumDto } from './dto/update-album.dto';
 import { Album, AlbumDocument } from './schemas/album.schema';
-import { InjectModel } from '@nestjs/mongoose';
-import mongoose, { Model, Types } from 'mongoose';
-import { Song } from 'src/song/schemas/song.schema';
-import { SongService } from 'src/song/song.service';
 
 @Injectable()
 export class AlbumService {

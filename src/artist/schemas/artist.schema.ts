@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument, Types } from 'mongoose';
+import { HydratedDocument } from 'mongoose';
 
 export type ArtistDocument = HydratedDocument<Artist>;
 
@@ -19,15 +19,6 @@ export class Artist {
 
   @Prop()
   profilePicture: string;
-
-  @Prop([String])
-  genres: string[];
-
-  @Prop({ type: [{ type: Types.ObjectId, ref: 'Album' }] })
-  albums: Types.ObjectId[];
-
-  @Prop({ type: [{ type: Types.ObjectId, ref: 'Song' }] })
-  songs: Types.ObjectId[];
 }
 
 export const ArtistSchema = SchemaFactory.createForClass(Artist);

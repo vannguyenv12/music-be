@@ -1,5 +1,4 @@
-import { IsString, IsArray, IsOptional } from 'class-validator';
-import { Types } from 'mongoose';
+import { IsOptional, IsString } from 'class-validator';
 
 export class CreateArtistDto {
   @IsString()
@@ -18,16 +17,4 @@ export class CreateArtistDto {
   @IsOptional()
   @IsString()
   profilePicture?: string;
-
-  @IsOptional()
-  @IsArray()
-  genres?: string[];
-
-  @IsOptional()
-  @IsArray()
-  albums?: Types.ObjectId[];
-
-  @IsOptional()
-  @IsArray()
-  songs?: Types.ObjectId[];
 }

@@ -19,10 +19,4 @@ export class ResponseArtistDto {
 
   @Expose()
   genres?: string[];
-
-  @Expose()
-  albums?: Types.ObjectId[];
-
-  @Expose()
-  songs?: Types.ObjectId[];
 }
