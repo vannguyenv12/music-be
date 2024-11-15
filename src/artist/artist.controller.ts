@@ -42,4 +42,9 @@ export class ArtistController {
   remove(@Param('id') id: string) {
     return this.artistService.remove(id);
   }
+
+  @Get(':artistId/follows')
+  async getArtistFollowCount(@Param('artistId') artistId: string) {
+    return this.artistService.getArtistFollowCount(artistId);
+  }
 }

@@ -68,4 +68,9 @@ export class SongController {
       duration,
     );
   }
+
+  @Get(':songId/likes')
+  async getSongLikesCount(@Param('songId') songId: string) {
+    return this.songService.getSongLikesCount(songId);
+  }
 }

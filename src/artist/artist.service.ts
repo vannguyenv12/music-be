@@ -7,11 +7,13 @@ import { UpdateArtistDto } from './dto/update-artist.dto';
 import { NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
+import { User } from 'src/user/schemas/user.schema';
 
 @Injectable()
 export class ArtistService {
   constructor(
     @InjectModel(Artist.name) private artistModel: Model<ArtistDocument>,
+    @InjectModel(User.name) private userModel: Model<User>,
   ) {}
 
   async findOneByUsername(username: string) {
@@ -61,5 +63,13 @@ export class ArtistService {
     if (!artist) {
       throw new NotFoundException('Artist not found');
     }
+  }
+
+  async getArtistFollowCount(artistId: string): Promise<number> {
+    const users = await this.userModel.find({
+      followedArtists: artistId,
+    });
+
+    return users.length;
   }
 }

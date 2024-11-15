@@ -5,10 +5,14 @@ import { Song } from './schemas/song.schema';
 import { CreateSongDto } from './dto/create-song.dto';
 import { UpdateSongDto } from './dto/update-song.dto';
 import getAudioDurationInSeconds from 'get-audio-duration';
+import { User } from 'src/user/schemas/user.schema';
 
 @Injectable()
 export class SongService {
-  constructor(@InjectModel(Song.name) private songModel: Model<Song>) {}
+  constructor(
+    @InjectModel(Song.name) private songModel: Model<Song>,
+    @InjectModel(User.name) private userModel: Model<User>,
+  ) {}
   async findSongsByIds(songIds: string[]): Promise<Song[]> {
     return this.songModel.find({ _id: { $in: songIds } }).exec();
   }
@@ -62,5 +66,13 @@ export class SongService {
     song.audioFile = audioFile;
     song.duration = duration;
     return song.save();
+  }
+
+  async getSongLikesCount(songId: string): Promise<number> {
+    const users = await this.userModel.find({
+      likedSongs: songId,
+    });
+
+    return users.length;
   }
 }
