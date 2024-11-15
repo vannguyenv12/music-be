@@ -23,6 +23,7 @@ export class UserService {
     private songService: SongService,
   ) {}
 
+  // Create a new user
   async create(createUserDto: CreateUserDto) {
     if (await this.findOneByUsername(createUserDto.username)) {
       throw new BadRequestException(`Username already in use`);
@@ -33,29 +34,46 @@ export class UserService {
     return createdUser.save();
   }
 
-  findAll() {
-    return `This action returns all user`;
+  // Find all active users
+  async findAll() {
+    return this.userModel.find({ isActive: { $ne: false } });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  // Find one user by ID
+  async findOne(id: string) {
+    const user = await this.userModel.findOne({
+      _id: id,
+      isActive: { $ne: false },
+    });
+    if (!user) throw new NotFoundException(`User not found`);
+    return user;
   }
 
+  // Find user by username
   async findOneByUsername(username: string) {
-    const userByEmail = await this.userModel.findOne({ username });
-
+    const userByEmail = await this.userModel.findOne({
+      username,
+      isActive: { $ne: false },
+    });
     return userByEmail;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  // Update user
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    const user = await this.findOne(id);
+
+    user.name = updateUserDto.name;
+    return user.save();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  // Soft delete a user (set isActive to false)
+  async softDelete(id: string) {
+    const user = await this.findOne(id);
+    user.isActive = false;
+    return user.save();
   }
 
-  // Like a Song
+  // Like a song
   async likeSong(userId: string, songId: string): Promise<User> {
     const user = await this.userModel.findById(userId);
     if (!user) {
@@ -75,7 +93,7 @@ export class UserService {
     return user.save();
   }
 
-  // Follow an Artist
+  // Follow an artist
   async followArtist(userId: string, artistId: string): Promise<User> {
     const user = await this.userModel.findById(userId);
     if (!user) {
@@ -99,6 +117,7 @@ export class UserService {
     return user.save();
   }
 
+  // Unlike a song
   async unlikeSong(userId: string, songId: string): Promise<User> {
     const user = await this.userModel.findById(userId);
     if (!user) {
@@ -122,13 +141,14 @@ export class UserService {
     return user.save();
   }
 
+  // Unfollow an artist
   async unfollowArtist(userId: string, artistId: string): Promise<User> {
     const user = await this.userModel.findById(userId);
     if (!user) {
       throw new NotFoundException('User not found');
     }
 
-    const artist = await this.artistService.findOne(artistId); // Assuming artistService exists and has findOne method
+    const artist = await this.artistService.findOne(artistId);
     if (!artist) {
       throw new NotFoundException('Artist not found');
     }

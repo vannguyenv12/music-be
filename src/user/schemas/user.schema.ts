@@ -1,10 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import mongoose, { Document, HydratedDocument } from 'mongoose';
 import { Artist } from 'src/artist/schemas/artist.schema';
 import { Song } from 'src/song/schemas/song.schema';
 
+export type UserDocument = HydratedDocument<User>;
+
 @Schema({ timestamps: true })
-export class User extends Document {
+export class User {
   @Prop({ required: true, unique: true })
   username: string;
 
@@ -28,6 +30,9 @@ export class User extends Document {
 
   @Prop({ default: 'user' })
   role: 'admin' | 'user';
+
+  @Prop({ default: true })
+  isActive: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

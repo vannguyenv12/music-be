@@ -1,7 +1,8 @@
 import { Expose } from 'class-transformer';
+import { ExposeId } from 'src/_core/decorators/expose-id.decorator';
 
 export class ResponseUserDto {
-  @Expose()
+  @ExposeId()
   _id: string;
   @Expose()
   username: string;
