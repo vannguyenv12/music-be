@@ -18,6 +18,7 @@ import { UpdateSongDto } from './dto/update-song.dto';
 import { AudioFileInterceptor } from './interceptors/upload-audio.interceptor';
 import { SongService } from './song.service';
 import getAudioDurationInSeconds from 'get-audio-duration';
+import { CoverImageInterceptor } from './interceptors/upload-image.interceptor';
 
 @Controller('songs')
 @TransformDTO(ResponseSongDto)
@@ -37,6 +38,11 @@ export class SongController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.songService.findOne(id);
+  }
+
+  @Get(':slug/slug')
+  findOneSlug(@Param('slug') slug: string) {
+    return this.songService.findOneBySlug(slug);
   }
 
   @Patch(':id')
@@ -72,5 +78,17 @@ export class SongController {
   @Get(':songId/likes')
   async getSongLikesCount(@Param('songId') songId: string) {
     return this.songService.getSongLikesCount(songId);
+  }
+
+  @Post(':id/upload-cover')
+  @UseInterceptors(CoverImageInterceptor)
+  async uploadCoverImage(
+    @Param('id') id: string,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    if (!file) {
+      throw new BadRequestException('Invalid file format');
+    }
+    return this.songService.updateCoverImage(id, file.filename);
   }
 }

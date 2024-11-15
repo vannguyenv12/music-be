@@ -27,10 +27,18 @@ export class SongService {
     return songs;
   }
 
-  async findOne(id: string): Promise<Song> {
+  async findOne(id: string) {
     const song = await this.songModel.findById(id).exec();
     if (!song) {
-      throw new NotFoundException(`Song with ID ${id} not found`);
+      throw new NotFoundException(`Song not found`);
+    }
+    return song;
+  }
+
+  async findOneBySlug(slug: string) {
+    const song = await this.songModel.findOne({ slug }).exec();
+    if (!song) {
+      throw new NotFoundException(`Song  not found`);
     }
     return song;
   }
@@ -74,5 +82,13 @@ export class SongService {
     });
 
     return users.length;
+  }
+
+  async updateCoverImage(id: string, fileName: string) {
+    const song = await this.findOne(id);
+
+    song.coverImage = fileName;
+
+    return song.save();
   }
 }
