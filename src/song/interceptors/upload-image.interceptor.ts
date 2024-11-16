@@ -6,7 +6,7 @@ import * as path from 'path';
 @Injectable()
 export class CoverImageInterceptor extends FileInterceptor('coverImage', {
   storage: diskStorage({
-    destination: './uploads/songs/cover-images',
+    destination: './uploads/songs',
     filename: (req, file, cb) => {
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
       const ext = path.extname(file.originalname);

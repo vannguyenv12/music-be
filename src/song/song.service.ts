@@ -4,8 +4,9 @@ import { Model } from 'mongoose';
 import { Song } from './schemas/song.schema';
 import { CreateSongDto } from './dto/create-song.dto';
 import { UpdateSongDto } from './dto/update-song.dto';
-import getAudioDurationInSeconds from 'get-audio-duration';
 import { User } from 'src/user/schemas/user.schema';
+import * as path from 'path';
+import * as fs from 'fs';
 
 @Injectable()
 export class SongService {
@@ -72,7 +73,6 @@ export class SongService {
     audioFile: string,
     duration: number,
   ): Promise<Song> {
-    console.log('hit service');
     const song = await this.songModel.findById(songId);
     if (!song) {
       throw new NotFoundException('Song not found');
