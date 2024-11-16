@@ -1,0 +1,1691 @@
+{
+	"info": {
+		"_postman_id": "1da2177e-1c9c-4c6f-aa3d-63ba717ef573",
+		"name": "Music",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17933542"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign Up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test3\",\r\n    \"name\": \"Van Nguyen\",\r\n    \"password\": \"test1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/sign-up",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test3\",\r\n    \"password\": \"test1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/sign-in",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Up (Artist)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"artist3\",\r\n    \"name\": \"Walen\",\r\n    \"password\": \"test1234\",\r\n    \"bio\": \"Artist Three\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/sign-up-artist",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"sign-up-artist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign In (Artist)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"artist3\",\r\n    \"password\": \"test1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/sign-in-artist",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"sign-in-artist"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get current user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY3MTA0NSwiZXhwIjoxNzMxNzU3NDQ1fQ.f6aOz0FzvHLZv8Nbt_aMrEVur7at3fweEtDAx8UVblw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/users/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like song",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2OTY0MiwiZXhwIjoxNzMxNzU2MDQyfQ.TCK0TE5B_0yuKBnxZ7cAOScjRJLp613ON4T3atNkuzQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"songId\": \"6736154847869528fca721bf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/like-song",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"like-song"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unlike song",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2OTY0MiwiZXhwIjoxNzMxNzU2MDQyfQ.TCK0TE5B_0yuKBnxZ7cAOScjRJLp613ON4T3atNkuzQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"songId\": \"6736154847869528fca721bf\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/unlike-song",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"unlike-song"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Follow artist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2OTY0MiwiZXhwIjoxNzMxNzU2MDQyfQ.TCK0TE5B_0yuKBnxZ7cAOScjRJLp613ON4T3atNkuzQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"artistId\": \"673630ce3ad41d5fc67b736b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/follow-artist",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"follow-artist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow artist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2OTY0MiwiZXhwIjoxNzMxNzU2MDQyfQ.TCK0TE5B_0yuKBnxZ7cAOScjRJLp613ON4T3atNkuzQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"artistId\": \"673630ce3ad41d5fc67b736b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/unfollow-artist",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"unfollow-artist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY3MTA0NSwiZXhwIjoxNzMxNzU3NDQ1fQ.f6aOz0FzvHLZv8Nbt_aMrEVur7at3fweEtDAx8UVblw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Van Nguyen dz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/673607fc0630882ccc1c9e0a",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"673607fc0630882ccc1c9e0a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY3MTA0NSwiZXhwIjoxNzMxNzU3NDQ1fQ.f6aOz0FzvHLZv8Nbt_aMrEVur7at3fweEtDAx8UVblw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Van Nguyen dz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/6736075587b7147082c280c8",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"6736075587b7147082c280c8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload profile picture",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4gZHoiLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY4MTY1OSwiZXhwIjoxNzMxNzY4MDU5fQ.1s-YunYtrBdJk4COMa_4gllkXgIF1aqd-Vf9ogg6xmw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/C:/Users/Nguyen Van/Desktop/images/airpods3_3.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/users/upload-profile-picture",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"upload-profile-picture"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY3MDczMiwiZXhwIjoxNzMxNzU3MTMyfQ.79xPxZhJ_KElg_8nCp56ZLbRJd6q2CO3Hy5p_fP0Ar4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Van Nguyen dz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genre",
+			"item": [
+				{
+					"name": "Get all genres",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/genres",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one genre",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/genres/673720943b587f1f6a59f66c",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genres",
+								"673720943b587f1f6a59f66c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create genre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Rock\",\r\n  \"description\": \"A rock of popular music\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/genres",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genres"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update genre",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"description\": \"A genre of popular music 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/genres/673720943b587f1f6a59f66c",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genres",
+								"673720943b587f1f6a59f66c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete genre",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/genres/673720943b587f1f6a59f66c",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"genres",
+								"673720943b587f1f6a59f66c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Song",
+			"item": [
+				{
+					"name": "Get all songs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/songs?page=1&limit=15",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one song",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs/6736154847869528fca721bf",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"6736154847869528fca721bf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get song like count",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs/6736154847869528fca721bf/likes",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"6736154847869528fca721bf",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create song",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Metal Is Trash\",\r\n  \"artist\": \"6737860328cb1222d821aab4\", \r\n  \"genre\": \"Rock\",\r\n  \"releaseDate\": \"2023-10-06\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update song",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs/67361671b031a8753713c9f4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"67361671b031a8753713c9f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete song",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs/67361671b031a8753713c9f4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"67361671b031a8753713c9f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload audio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "/D:/u-course/nextjs/music-be/data/jazz/Aylex - Life is Beautiful.mp3"
+								},
+								{
+									"key": "songId",
+									"value": "6737884f420633122977713b",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/songs/upload-audio",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"upload-audio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload cover image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "coverImage",
+									"type": "file",
+									"src": "/D:/u-course/nextjs/data/song-cover-images/pexels-sebastian-palomino-933481-1955134.jpg"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/songs/673788c1420633122977714f/upload-cover",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"673788c1420633122977714f",
+								"upload-cover"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Artist",
+			"item": [
+				{
+					"name": "Get all artists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/artists",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"artists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one artist",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/artist/6736154847869528fca721bf",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"artist",
+								"6736154847869528fca721bf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get follow count artist",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/artists/673630ce3ad41d5fc67b736b/follows",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"artists",
+								"673630ce3ad41d5fc67b736b",
+								"follows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create song",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 4\",\r\n  \"artist\": \"64cbafc2e4e4f4b47f2f4c1a\", \r\n  \"album\": \"64cbafc2e4e4f4b47f2f4c1b\",\r\n  \"genre\": \"Pop\",\r\n  \"releaseDate\": \"2017-01-06\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update song",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs/67361671b031a8753713c9f4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"67361671b031a8753713c9f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete song",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs/67361671b031a8753713c9f4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"67361671b031a8753713c9f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload audio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "audioFile",
+									"type": "file",
+									"src": "/C:/Users/Nguyen Van/Desktop/HoaNoBenDuong-QuangDangTranACV-14190618.mp3"
+								},
+								{
+									"key": "songId",
+									"value": "67361e3e3c8020039aac029e",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/songs/upload-audio",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"upload-audio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload profile picture",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM3ODYxMzI4Y2IxMjIyZDgyMWFhYjciLCJ1c2VybmFtZSI6ImFydGlzdDMiLCJuYW1lIjoiV2FsZW4iLCJiaW8iOiJBcnRpc3QgVGhyZWUiLCJpYXQiOjE3MzE2OTM1MzksImV4cCI6MTczMTc3OTkzOX0.6NSkkw6zL0-ylwX09loquKlbWcvEMnFFs2yvJ7aLZC8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePicture",
+									"type": "file",
+									"src": "/D:/u-course/nextjs/data/artist-image/pexels-pripicart-516927.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/artists/upload-profile-picture",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"artists",
+								"upload-profile-picture"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Album",
+			"item": [
+				{
+					"name": "Get all albums",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/albums",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one album",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/albums/67370749a12e29a2c48d2d5e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"albums",
+								"67370749a12e29a2c48d2d5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create album",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MzBjZTNhZDQxZDVmYzY3YjczNmIiLCJ1c2VybmFtZSI6ImFydGlzdDEiLCJuYW1lIjoiVmFuIEFydGlzdCIsImJpbyI6IlRvcCAxIEFydGlzdCBWTiIsImlhdCI6MTczMTY1OTU2MywiZXhwIjoxNzMxNzQ1OTYzfQ.J7yf9_cvnEcAJalEZyJGDstAzyvTvijwUTEInX71i9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Greatest Hits 2\",\r\n  \"songs\": [\"64c8b2f4cbe3f45a9b12d3a4\", \"64c8b2f5cbe3f45a9b12d3a5\"],\r\n  \"releaseDate\": \"2024-11-15\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/albums",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"albums"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update albums",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Greatest Hits 2\",\r\n  \"releaseDate\": \"2024-11-15\",\r\n  \"genre\": \"Pop\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/albums/67370749a12e29a2c48d2d5e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"albums",
+								"67370749a12e29a2c48d2d5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete album",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs/67361671b031a8753713c9f4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"67361671b031a8753713c9f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add songs to album",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"albumId\": \"67370749a12e29a2c48d2d5e\",\r\n    \"songIds\": [\"6736271fab7c54d8700bf940\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/albums/add-songs",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"albums",
+								"add-songs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove songs from album",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"albumId\": \"67370749a12e29a2c48d2d5e\",\r\n    \"songIds\": [\"6736271fab7c54d8700bf940\", \"6736154847869528fca721bf\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/albums/remove-songs",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"albums",
+								"remove-songs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Playlist",
+			"item": [
+				{
+					"name": "Get all playlists",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2MzYwMiwiZXhwIjoxNzMxNzUwMDAyfQ.cBltYfzGmIfo0xCeilbuCQJXCQANEz4NnBqpaiZbEn0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/playlists",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get my playlists",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2MzYwMiwiZXhwIjoxNzMxNzUwMDAyfQ.cBltYfzGmIfo0xCeilbuCQJXCQANEz4NnBqpaiZbEn0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/playlists/me",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"playlists",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one playlist",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2NDEwMSwiZXhwIjoxNzMxNzUwNTAxfQ.2Kfcw9p8Qh7TtR0WOPeGL9Y7ma19Z91iLy6ztV4YyFQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/playlists/673718283f6f7975789fb5b7",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"playlists",
+								"673718283f6f7975789fb5b7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create playlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2MzYwMiwiZXhwIjoxNzMxNzUwMDAyfQ.cBltYfzGmIfo0xCeilbuCQJXCQANEz4NnBqpaiZbEn0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"My Favorite Playlist\",\r\n  \"description\": \"A collection of my favorite songs\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/playlists",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"playlists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update playlist",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Greatest Hits 2\",\r\n  \"releaseDate\": \"2024-11-15\",\r\n  \"genre\": \"Pop\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/albums/67370749a12e29a2c48d2d5e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"albums",
+								"67370749a12e29a2c48d2d5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete playlist",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs/67361671b031a8753713c9f4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"67361671b031a8753713c9f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add songs to playlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2NDEwMSwiZXhwIjoxNzMxNzUwNTAxfQ.2Kfcw9p8Qh7TtR0WOPeGL9Y7ma19Z91iLy6ztV4YyFQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"songIds\": [\"6736271fab7c54d8700bf940\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/playlists/673718283f6f7975789fb5b7/songs",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"playlists",
+								"673718283f6f7975789fb5b7",
+								"songs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove songs from playlist",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2NDEwMSwiZXhwIjoxNzMxNzUwNTAxfQ.2Kfcw9p8Qh7TtR0WOPeGL9Y7ma19Z91iLy6ztV4YyFQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"songIds\": [\"6736271fab7c54d8700bf940\", \"6736271fab7c54d8700bf940\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/playlists/673718283f6f7975789fb5b7/songs",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"playlists",
+								"673718283f6f7975789fb5b7",
+								"songs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Get all comments by songs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/comments/song/6736154847869528fca721bf",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"comments",
+								"song",
+								"6736154847869528fca721bf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one comment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/comments/673727e0d3417e66f9c8d65c",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"comments",
+								"673727e0d3417e66f9c8d65c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2Nzg5MSwiZXhwIjoxNzMxNzU0MjkxfQ.3WopU0cf8sXnsDzarxmoC_MNTMGgFG_McdCyAKWV45Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"song\": \"6736154847869528fca721bf\",\r\n  \"text\": \"This is a great song!\",\r\n  \"duration\": 180                    \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/comments",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update comment",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"Fine ok\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/comments/673727e0d3417e66f9c8d65c",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"comments",
+								"673727e0d3417e66f9c8d65c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/comments/67372975aefe8b3fd30b863b",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"comments",
+								"67372975aefe8b3fd30b863b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Import data",
+			"item": [
+				{
+					"name": "Import songs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/songs/import-data",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"import-data"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
