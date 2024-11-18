@@ -26,7 +26,13 @@ export class SongService {
   async findAll(page = 1, limit = 6) {
     const skip = (page - 1) * limit;
     const [data, total] = await Promise.all([
-      this.songModel.find().skip(skip).limit(limit).populate('artist').exec(),
+      this.songModel
+        .find()
+        .skip(skip)
+        .limit(limit)
+        .populate('artist')
+        .sort({ releaseDate: 1 })
+        .exec(),
       this.songModel.countDocuments(),
     ]);
 
@@ -36,6 +42,8 @@ export class SongService {
   }
 
   async findOne(id: string) {
+    console.log('check id', id);
+
     const song = await this.songModel.findById(id).exec();
     if (!song) {
       throw new NotFoundException(`Song not found`);
