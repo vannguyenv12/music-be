@@ -40,7 +40,7 @@ export class UserController {
 
   @Get('/me')
   getMe(@CurrentUser() user) {
-    return this.userService.findOne(user._id);
+    return this.userService.findMe(user._id);
   }
 
   @Get(':id')

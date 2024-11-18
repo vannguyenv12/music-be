@@ -13,12 +13,14 @@ import * as bcrypt from 'bcrypt';
 import { ArtistService } from 'src/artist/artist.service';
 import { SongService } from 'src/song/song.service';
 import { AuthGuard } from 'src/_core/guards/auth.guard';
+import { Artist } from 'src/artist/schemas/artist.schema';
 
 @Injectable()
 @UseGuards(AuthGuard)
 export class UserService {
   constructor(
     @InjectModel(User.name) private userModel: Model<User>,
+    @InjectModel(Artist.name) private artistModel: Model<Artist>,
     private artistService: ArtistService,
     private songService: SongService,
   ) {}
@@ -55,7 +57,24 @@ export class UserService {
       _id: id,
       isActive: { $ne: false },
     });
+
     if (!user) throw new NotFoundException(`User not found`);
+    return user;
+  }
+
+  async findMe(id: string) {
+    const user = await this.userModel.findOne({
+      _id: id,
+      isActive: { $ne: false },
+    });
+
+    if (!user) {
+      const artist = await this.artistModel.findOne({
+        _id: id,
+      });
+
+      return artist;
+    }
     return user;
   }
 
