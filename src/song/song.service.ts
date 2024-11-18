@@ -26,7 +26,7 @@ export class SongService {
   async findAll(page = 1, limit = 6) {
     const skip = (page - 1) * limit;
     const [data, total] = await Promise.all([
-      this.songModel.find().skip(skip).limit(limit).exec(),
+      this.songModel.find().skip(skip).limit(limit).populate('artist').exec(),
       this.songModel.countDocuments(),
     ]);
 
