@@ -41,6 +41,24 @@ export class SongService {
     return { data, total, hasMore };
   }
 
+  async findMySong(page = 1, limit = 6, artist) {
+    const skip = (page - 1) * limit;
+    const [data, total] = await Promise.all([
+      this.songModel
+        .find({ artist: artist._id })
+        .skip(skip)
+        .limit(limit)
+        .populate('artist')
+        .sort({ releaseDate: 1 })
+        .exec(),
+      this.songModel.find({ artist: artist._id }).countDocuments(),
+    ]);
+
+    const hasMore = skip + limit < total;
+
+    return { data, total, hasMore };
+  }
+
   async findOne(id: string) {
     console.log('check id', id);
 

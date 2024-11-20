@@ -9,6 +9,7 @@ import {
   Post,
   Query,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { TransformDTO } from 'src/_core/interceptors/transform-dto.interceptor';
@@ -20,6 +21,9 @@ import { AudioFileInterceptor } from './interceptors/upload-audio.interceptor';
 import { SongService } from './song.service';
 import getAudioDurationInSeconds from 'get-audio-duration';
 import { CoverImageInterceptor } from './interceptors/upload-image.interceptor';
+import { CurrentUser } from 'src/_core/decorators/current-user.decorator';
+import { User } from 'src/user/schemas/user.schema';
+import { AuthGuard } from 'src/_core/guards/auth.guard';
 
 @Controller('songs')
 @TransformDTO(ResponseSongDto)
@@ -37,6 +41,31 @@ export class SongController {
     const limitNum = parseInt(limit, 10) || 6;
 
     const result = await this.songService.findAll(pageNum, limitNum);
+
+    return {
+      data: result.data,
+      total: result.total,
+      currentPage: pageNum,
+      totalPages: Math.ceil(result.total / limitNum),
+      hasMore: result.hasMore,
+    };
+  }
+
+  @Get('/me')
+  @UseGuards(AuthGuard)
+  async findMySongs(
+    @Query('page') page: string,
+    @Query('limit') limit: string,
+    @CurrentUser() currentUser: User,
+  ) {
+    const pageNum = parseInt(page, 10) || 1;
+    const limitNum = parseInt(limit, 10) || 6;
+
+    const result = await this.songService.findMySong(
+      pageNum,
+      limitNum,
+      currentUser,
+    );
 
     return {
       data: result.data,
