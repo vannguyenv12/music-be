@@ -25,6 +25,24 @@ export class AlbumService {
     return this.albumModel.find().populate('artist').exec();
   }
 
+  async findAllPaginate(page = 1, limit = 6) {
+    const skip = (page - 1) * limit;
+    const [data, total] = await Promise.all([
+      this.albumModel
+        .find()
+        .skip(skip)
+        .limit(limit)
+        .populate('artist')
+        .sort({ releaseDate: 1 })
+        .exec(),
+      this.albumModel.countDocuments(),
+    ]);
+
+    const hasMore = skip + limit < total;
+
+    return { data, total, hasMore };
+  }
+
   async findOne(id: string): Promise<Album> {
     const album = await this.albumModel
       .findById(id)

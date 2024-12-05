@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { CurrentUser } from 'src/_core/decorators/current-user.decorator';
@@ -32,8 +33,27 @@ export class AlbumController {
   }
 
   @Get()
-  async findAll(): Promise<Album[]> {
+  async findAll() {
     return this.albumService.findAll();
+  }
+
+  @Get('/pagination')
+  async findMySongs(
+    @Query('page') page: string,
+    @Query('limit') limit: string,
+  ) {
+    const pageNum = parseInt(page, 10) || 1;
+    const limitNum = parseInt(limit, 10) || 6;
+
+    const result = await this.albumService.findAllPaginate(pageNum, limitNum);
+
+    return {
+      data: result.data,
+      total: result.total,
+      currentPage: pageNum,
+      totalPages: Math.ceil(result.total / limitNum),
+      hasMore: result.hasMore,
+    };
   }
 
   @Get(':id')
