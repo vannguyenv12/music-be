@@ -8,6 +8,8 @@ class User {
   @Expose()
   profilePicture: string;
   @Expose()
+  provider: string;
+  @Expose()
   role: 'admin' | 'user';
 }
 
