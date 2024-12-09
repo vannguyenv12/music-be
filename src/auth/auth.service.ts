@@ -22,6 +22,7 @@ export class AuthService {
 
     return {
       accessToken: await generateToken(user, this.jwtService),
+      user,
     };
   }
 
@@ -40,6 +41,7 @@ export class AuthService {
 
     return {
       accessToken: await generateToken(user, this.jwtService),
+      user,
     };
   }
 
@@ -55,11 +57,13 @@ export class AuthService {
       });
       return {
         accessToken: await generateToken(user, this.jwtService),
+        user,
       };
     }
 
     return {
       accessToken: await generateToken(existingUser, this.jwtService),
+      user: existingUser,
     };
   }
 
