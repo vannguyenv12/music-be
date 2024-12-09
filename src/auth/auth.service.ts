@@ -7,6 +7,7 @@ import { CreateAuthDto } from './dto/create-auth.dto';
 import { SignInAuthDto } from './dto/sign-in-auth.dto';
 import { ArtistService } from 'src/artist/artist.service';
 import { CreateArtistDto } from './dto/create-artist.dto';
+import { CreateAuthSocial } from './dto/create-auth-social';
 
 @Injectable()
 export class AuthService {
@@ -27,6 +28,11 @@ export class AuthService {
   async signIn(signInAuth: SignInAuthDto) {
     const user = await this.userService.findOneByUsername(signInAuth.username);
 
+    if (user.provider !== 'MY_SYSTEM')
+      throw new BadRequestException(
+        'This user can only login with social media',
+      );
+
     if (!user) throw new BadRequestException('Bad Credentials');
 
     const isMatch = await bcrypt.compare(signInAuth.password, user.password);
@@ -34,6 +40,26 @@ export class AuthService {
 
     return {
       accessToken: await generateToken(user, this.jwtService),
+    };
+  }
+
+  async signInSocial(createAuthDto: CreateAuthSocial) {
+    const existingUser = await this.userService.findOneByUsername(
+      createAuthDto.username,
+    );
+
+    if (!existingUser) {
+      const user = await this.userService.create({
+        ...createAuthDto,
+        password: 'test1234',
+      });
+      return {
+        accessToken: await generateToken(user, this.jwtService),
+      };
+    }
+
+    return {
+      accessToken: await generateToken(existingUser, this.jwtService),
     };
   }
 

@@ -5,6 +5,7 @@ import { CreateAuthDto } from './dto/create-auth.dto';
 import { ResponseAuthDto } from './dto/response-auth.dto';
 import { SignInAuthDto } from './dto/sign-in-auth.dto';
 import { CreateArtistDto } from './dto/create-artist.dto';
+import { CreateAuthSocial } from './dto/create-auth-social';
 
 @Controller('auth')
 @TransformDTO(ResponseAuthDto)
@@ -21,6 +22,12 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   signIn(@Body() signInAuth: SignInAuthDto) {
     return this.authService.signIn(signInAuth);
+  }
+
+  @Post('/sign-in-social')
+  @HttpCode(HttpStatus.OK)
+  signInSocial(@Body() signInAuth: CreateAuthSocial) {
+    return this.authService.signInSocial(signInAuth);
   }
 
   @Post('/sign-up-artist')
