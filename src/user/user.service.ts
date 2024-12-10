@@ -122,6 +122,24 @@ export class UserService {
     return user.save();
   }
 
+  async checkLikeSong(userId: string, songId: string) {
+    const user = await this.userModel.findById(userId);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const song = await this.songService.findOne(songId);
+    if (!song) {
+      throw new NotFoundException('Song not found');
+    }
+
+    if (user.likedSongs.some((likedSong) => likedSong.toString() === songId)) {
+      return true;
+    }
+
+    return false;
+  }
+
   // Follow an artist
   async followArtist(userId: string, artistId: string): Promise<User> {
     const user = await this.userModel.findById(userId);
@@ -144,6 +162,28 @@ export class UserService {
 
     user.followedArtists.push(artist);
     return user.save();
+  }
+
+  async checkFollowArtist(userId: string, artistId: string) {
+    const user = await this.userModel.findById(userId);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const artist = await this.artistService.findOne(artistId);
+    if (!artist) {
+      throw new NotFoundException('Artist not found');
+    }
+
+    if (
+      user.followedArtists.some(
+        (followedArtist) => followedArtist.toString() === artistId,
+      )
+    ) {
+      return true;
+    }
+
+    return false;
   }
 
   // Unlike a song

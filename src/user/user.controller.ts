@@ -10,6 +10,7 @@ import {
   UseInterceptors,
   UploadedFile,
   BadRequestException,
+  Query,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -36,6 +37,19 @@ export class UserController {
   @Get()
   findAll() {
     return this.userService.findAll();
+  }
+
+  @Get('check-like-song')
+  async checkLikeSong(@Query('songId') songId: string, @CurrentUser() user) {
+    return this.userService.checkLikeSong(user._id, songId);
+  }
+
+  @Get('check-follow-artist')
+  async checkFollowArtist(
+    @Query('artistId') artistId: string,
+    @CurrentUser() user,
+  ) {
+    return this.userService.checkFollowArtist(user._id, artistId);
   }
 
   @Get('/me')
