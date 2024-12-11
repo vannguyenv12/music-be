@@ -44,7 +44,7 @@ export class PlaylistService {
     const playlist = await this.playlistModel
       .findById(id)
       .populate('creator')
-      .populate('songs', '_id username name')
+      .populate('songs')
       .exec();
 
     if (!playlist) {
