@@ -16,6 +16,5 @@ export class CreateCommentDto {
   text: string;
 
   @IsInt()
-  @IsPositive()
   duration: number;
 }
