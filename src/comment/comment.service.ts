@@ -23,7 +23,11 @@ export class CommentService {
 
   // Get all comments for a specific song
   async findAllBySong(songId: string): Promise<Comment[]> {
-    return this.commentModel.find({ song: songId }).populate('user').exec();
+    return this.commentModel
+      .find({ song: songId })
+      .sort({ createdAt: -1 })
+      .populate('user')
+      .exec();
   }
 
   // Get a specific comment by its ID
