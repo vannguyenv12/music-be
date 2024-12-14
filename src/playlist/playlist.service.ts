@@ -15,6 +15,8 @@ export class PlaylistService {
 
   // Create a new playlist
   async create(createPlaylistDto: CreatePlaylistDto, user): Promise<Playlist> {
+    console.log('check user', user);
+
     const newPlaylist = new this.playlistModel({
       ...createPlaylistDto,
       creator: user._id,

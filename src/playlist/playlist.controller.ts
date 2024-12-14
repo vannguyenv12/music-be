@@ -22,6 +22,7 @@ export class PlaylistController {
   constructor(private readonly playlistService: PlaylistService) {}
 
   // Create a new playlist
+  @UseGuards(AuthGuard)
   @Post()
   async create(
     @Body() createPlaylistDto: CreatePlaylistDto,
@@ -59,6 +60,7 @@ export class PlaylistController {
 
   // Delete a playlist by id
   @Delete(':id')
+  @UseGuards(AuthGuard)
   async remove(@Param('id') id: string) {
     return this.playlistService.remove(id);
   }
