@@ -17,7 +17,6 @@ import { TransformDTO } from 'src/_core/interceptors/transform-dto.interceptor';
 import { ResponsePlaylistDto } from './dto/response-playlist.dto';
 
 @Controller('playlists')
-@UseGuards(AuthGuard)
 @TransformDTO(ResponsePlaylistDto)
 export class PlaylistController {
   constructor(private readonly playlistService: PlaylistService) {}
@@ -37,6 +36,7 @@ export class PlaylistController {
     return this.playlistService.findAll();
   }
 
+  @UseGuards(AuthGuard)
   @Get('/me')
   async findMy(@CurrentUser() user) {
     return this.playlistService.findMyPlaylists(user);
