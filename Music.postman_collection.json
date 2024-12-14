@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "1da2177e-1c9c-4c6f-aa3d-63ba717ef573",
+		"_postman_id": "5b8eb3b9-5fab-48f8-be45-38b5736305b9",
 		"name": "Music",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17933542"
+		"_exporter_id": "17933542",
+		"_collection_link": "https://qlct-5445.postman.co/workspace/Nextjs~4cb79515-7e01-4351-9f2c-72c5fcd63db4/collection/17933542-5b8eb3b9-5fab-48f8-be45-38b5736305b9?action=share&source=collection_link&creator=17933542"
 	},
 	"item": [
 		{
@@ -16,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"test3\",\r\n    \"name\": \"Van Nguyen\",\r\n    \"password\": \"test1234\"\r\n}",
+							"raw": "{\r\n    \"username\": \"vantest1\",\r\n    \"name\": \"Van Nguyen\",\r\n    \"password\": \"test1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -43,7 +44,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"test3\",\r\n    \"password\": \"test1234\"\r\n}",
+							"raw": "{\r\n    \"username\": \"vantest1\",\r\n    \"password\": \"test1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -97,7 +98,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"artist3\",\r\n    \"password\": \"test1234\"\r\n}",
+							"raw": "{\r\n    \"username\": \"artist1\",\r\n    \"password\": \"test1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -116,6 +117,33 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Sign In Social (User)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test\",\r\n    \"name\": \"Van Nguyen\",\r\n    \"provider\": \"GITHUB\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/sign-in-social",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"sign-in-social"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -130,7 +158,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY3MTA0NSwiZXhwIjoxNzMxNzU3NDQ1fQ.f6aOz0FzvHLZv8Nbt_aMrEVur7at3fweEtDAx8UVblw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzNhMWY2NDcwYTAxYWFlMmQxMjQ3YWQiLCJ1c2VybmFtZSI6ImFkbWluMSIsIm5hbWUiOiJBZG1pbiBTeXN0ZW0iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzMxNTAxNzAsImV4cCI6MTczMzIzNjU3MH0.hNSWZeI27PqHGkXKmMQjHNsoaUskJ4QQz39pkvTPQ5A",
 									"type": "string"
 								}
 							]
@@ -158,7 +186,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2OTY0MiwiZXhwIjoxNzMxNzU2MDQyfQ.TCK0TE5B_0yuKBnxZ7cAOScjRJLp613ON4T3atNkuzQ",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU3NDgzOWJhYTcxNTIxOGRmYTM4MTAiLCJ1c2VybmFtZSI6InZhbnRlc3QxIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNDAyMTkxNiwiZXhwIjoxNzM0MTA4MzE2fQ.ToFV7SAN_WWTq4zYKKQVhp7CyMHkbpBmOi3Pp9drJiI",
 									"type": "string"
 								}
 							]
@@ -167,7 +195,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"songId\": \"6736154847869528fca721bf\"\r\n}",
+							"raw": "{\r\n    \"songId\": \"6737865e28cb1222d821aab9\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -411,7 +439,7 @@
 					"response": []
 				},
 				{
-					"name": "Get all users Copy",
+					"name": "Get all users",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -448,6 +476,98 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Check like song",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU3NDgzOWJhYTcxNTIxOGRmYTM4MTAiLCJ1c2VybmFtZSI6InZhbnRlc3QxIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNDAyMTkxNiwiZXhwIjoxNzM0MTA4MzE2fQ.ToFV7SAN_WWTq4zYKKQVhp7CyMHkbpBmOi3Pp9drJiI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Van Nguyen dz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/check-like-song?songId=6737865e28cb1222d821aab9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"check-like-song"
+							],
+							"query": [
+								{
+									"key": "songId",
+									"value": "6737865e28cb1222d821aab9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check follow artist",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU3NDgzOWJhYTcxNTIxOGRmYTM4MTAiLCJ1c2VybmFtZSI6InZhbnRlc3QxIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMzg1Njc1NSwiZXhwIjoxNzMzOTQzMTU1fQ.WA3oVdmwCx6ZTEoapw5PWuY86pGE6Ly6aR9lsQ3wY5Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Van Nguyen dz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/users/check-follow-artist?artistId=6737860328cb1222d821aab4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users",
+								"check-follow-artist"
+							],
+							"query": [
+								{
+									"key": "artistId",
+									"value": "6737860328cb1222d821aab4"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -466,6 +586,13 @@
 							],
 							"path": [
 								"genres"
+							],
+							"query": [
+								{
+									"key": "delay",
+									"value": "4000",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -592,7 +719,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/songs?page=1&limit=15",
+							"raw": "{{URL}}/songs?page=1&limit=5",
 							"host": [
 								"{{URL}}"
 							],
@@ -606,7 +733,45 @@
 								},
 								{
 									"key": "limit",
-									"value": "15"
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get my song (artist)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM3ODVlYTI4Y2IxMjIyZDgyMWFhYjEiLCJ1c2VybmFtZSI6ImFydGlzdDEiLCJuYW1lIjoiQnVyZ3VuZHkiLCJiaW8iOiJBcnRpc3QgT25lIiwicHJvZmlsZVBpY3R1cmUiOiJ1c2VyLTE3MzE2OTM1MTA2MzQtMTk2NDU3NzEuanBnIiwiaWF0IjoxNzMyMTE1MDcxLCJleHAiOjE3MzIyMDE0NzF9.saEsr-sE6zRTgzewCMlsIFAMaRDfawPpex9RUy2jr_o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/songs/me?page=1&limit=5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"me"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
 								}
 							]
 						}
@@ -631,13 +796,44 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/songs/6736154847869528fca721bf",
+							"raw": "{{URL}}/songs/6737865e28cb1222d821aab9",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"songs",
-								"6736154847869528fca721bf"
+								"6737865e28cb1222d821aab9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one song (by slug)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/songs/dreams-of-tomorrow/slug",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"songs",
+								"dreams-of-tomorrow",
+								"slug"
 							]
 						}
 					},
@@ -661,13 +857,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/songs/6736154847869528fca721bf/likes",
+							"raw": "{{URL}}/songs/6737865e28cb1222d821aab9/likes",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"songs",
-								"6736154847869528fca721bf",
+								"6737865e28cb1222d821aab9",
 								"likes"
 							]
 						}
@@ -707,7 +903,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"title\": \"Shape of You 2\"\r\n}\r\n",
+							"raw": "{\r\n  \"title\": \"Dreams of Tomorrow\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -715,13 +911,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/songs/67361671b031a8753713c9f4",
+							"raw": "{{URL}}/songs/6737865e28cb1222d821aab9",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"songs",
-								"67361671b031a8753713c9f4"
+								"6737865e28cb1222d821aab9"
 							]
 						}
 					},
@@ -798,7 +994,7 @@
 								{
 									"key": "coverImage",
 									"type": "file",
-									"src": "/D:/u-course/nextjs/data/song-cover-images/pexels-sebastian-palomino-933481-1955134.jpg"
+									"src": "/C:/Users/Nguyen Van/Desktop/images/a51.jpg"
 								},
 								{
 									"key": "",
@@ -809,13 +1005,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/songs/673788c1420633122977714f/upload-cover",
+							"raw": "{{URL}}/songs/6737884f420633122977713b/upload-cover",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"songs",
-								"673788c1420633122977714f",
+								"6737884f420633122977713b",
 								"upload-cover"
 							]
 						}
@@ -1079,6 +1275,34 @@
 					"response": []
 				},
 				{
+					"name": "Get all albums (with paginate)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/albums/pagination?page=1&limit=6",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"albums",
+								"pagination"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get one album",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1096,13 +1320,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/albums/67370749a12e29a2c48d2d5e",
+							"raw": "{{URL}}/albums/673dc59e17512cf40cec8ab4",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"albums",
-								"67370749a12e29a2c48d2d5e"
+								"673dc59e17512cf40cec8ab4"
 							]
 						}
 					},
@@ -1116,7 +1340,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MzBjZTNhZDQxZDVmYzY3YjczNmIiLCJ1c2VybmFtZSI6ImFydGlzdDEiLCJuYW1lIjoiVmFuIEFydGlzdCIsImJpbyI6IlRvcCAxIEFydGlzdCBWTiIsImlhdCI6MTczMTY1OTU2MywiZXhwIjoxNzMxNzQ1OTYzfQ.J7yf9_cvnEcAJalEZyJGDstAzyvTvijwUTEInX71i9Q",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM3ODVlYTI4Y2IxMjIyZDgyMWFhYjEiLCJ1c2VybmFtZSI6ImFydGlzdDEiLCJuYW1lIjoiQnVyZ3VuZHkiLCJiaW8iOiJBcnRpc3QgT25lIiwicHJvZmlsZVBpY3R1cmUiOiJ1c2VyLTE3MzE2OTM1MTA2MzQtMTk2NDU3NzEuanBnIiwiaWF0IjoxNzMyMTAxNTIxLCJleHAiOjE3MzIxODc5MjF9.cBex4tWfcMQbo6UvOQszi9d6r6ByeEDgYVzGses2wJs",
 									"type": "string"
 								}
 							]
@@ -1125,7 +1349,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"title\": \"Greatest Hits 2\",\r\n  \"songs\": [\"64c8b2f4cbe3f45a9b12d3a4\", \"64c8b2f5cbe3f45a9b12d3a5\"],\r\n  \"releaseDate\": \"2024-11-15\"\r\n}\r\n",
+							"raw": "{\r\n  \"title\": \"Top Hits\",\r\n  \"releaseDate\": \"2024-12-15\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1186,13 +1410,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/songs/67361671b031a8753713c9f4",
+							"raw": "{{URL}}/albums/6759f86768d0e6d9e0314d1c",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"songs",
-								"67361671b031a8753713c9f4"
+								"albums",
+								"6759f86768d0e6d9e0314d1c"
 							]
 						}
 					},
@@ -1232,7 +1456,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"albumId\": \"67370749a12e29a2c48d2d5e\",\r\n    \"songIds\": [\"6736271fab7c54d8700bf940\", \"6736154847869528fca721bf\"]\r\n}",
+							"raw": "{\r\n    \"albumId\": \"673dc59e17512cf40cec8ab4\",\r\n    \"songIds\": [\"6737865e28cb1222d821aab9\", \"673786bb28cb1222d821aac9\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1292,7 +1516,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2MzYwMiwiZXhwIjoxNzMxNzUwMDAyfQ.cBltYfzGmIfo0xCeilbuCQJXCQANEz4NnBqpaiZbEn0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU3NDgzOWJhYTcxNTIxOGRmYTM4MTAiLCJ1c2VybmFtZSI6InZhbnRlc3QxIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNDE4MTY3MSwiZXhwIjoxNzM0MjY4MDcxfQ.Bf9d4LX5FGb70tQJ_1p-y6LRGOqJs5j59yeMfXlGzJE",
 									"type": "string"
 								}
 							]
@@ -1323,7 +1547,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2NDEwMSwiZXhwIjoxNzMxNzUwNTAxfQ.2Kfcw9p8Qh7TtR0WOPeGL9Y7ma19Z91iLy6ztV4YyFQ",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU3NDgzOWJhYTcxNTIxOGRmYTM4MTAiLCJ1c2VybmFtZSI6InZhbnRlc3QxIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNDE4MTY3MSwiZXhwIjoxNzM0MjY4MDcxfQ.Bf9d4LX5FGb70tQJ_1p-y6LRGOqJs5j59yeMfXlGzJE",
 									"type": "string"
 								}
 							]
@@ -1340,13 +1564,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/playlists/673718283f6f7975789fb5b7",
+							"raw": "{{URL}}/playlists/67597841dc2c1fe250770591",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"playlists",
-								"673718283f6f7975789fb5b7"
+								"67597841dc2c1fe250770591"
 							]
 						}
 					},
@@ -1360,7 +1584,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2MzYwMiwiZXhwIjoxNzMxNzUwMDAyfQ.cBltYfzGmIfo0xCeilbuCQJXCQANEz4NnBqpaiZbEn0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU3NDgzOWJhYTcxNTIxOGRmYTM4MTAiLCJ1c2VybmFtZSI6InZhbnRlc3QxIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMzkxNjcyMywiZXhwIjoxNzM0MDAzMTIzfQ.fj97b-0-o9M2EM597T3zS-rD1k0UvsYxqtX4ebH52pA",
 									"type": "string"
 								}
 							]
@@ -1418,6 +1642,16 @@
 				{
 					"name": "Delete playlist",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU3NDgzOWJhYTcxNTIxOGRmYTM4MTAiLCJ1c2VybmFtZSI6InZhbnRlc3QxIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMzk0NzY3MSwiZXhwIjoxNzM0MDM0MDcxfQ.X6vtjyJsG4uWvoRq4xxRCHD3aZWDAWW40IXG7O6N8pU",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -1430,13 +1664,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/songs/67361671b031a8753713c9f4",
+							"raw": "{{URL}}/playlists/6759f26b68d0e6d9e0314ab2",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"songs",
-								"67361671b031a8753713c9f4"
+								"playlists",
+								"6759f26b68d0e6d9e0314ab2"
 							]
 						}
 					},
@@ -1529,14 +1763,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/comments/song/6736154847869528fca721bf",
+							"raw": "{{URL}}/comments/song/6737865e28cb1222d821aab9",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"comments",
 								"song",
-								"6736154847869528fca721bf"
+								"6737865e28cb1222d821aab9"
 							]
 						}
 					},
@@ -1580,7 +1814,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzM2MDdmYzA2MzA4ODJjY2MxYzllMGEiLCJ1c2VybmFtZSI6InRlc3QzIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczMTY2Nzg5MSwiZXhwIjoxNzMxNzU0MjkxfQ.3WopU0cf8sXnsDzarxmoC_MNTMGgFG_McdCyAKWV45Y",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU3NDgzOWJhYTcxNTIxOGRmYTM4MTAiLCJ1c2VybmFtZSI6InZhbnRlc3QxIiwibmFtZSI6IlZhbiBOZ3V5ZW4iLCJyb2xlIjoidXNlciIsImlhdCI6MTczNDAyNjc1NSwiZXhwIjoxNzM0MTEzMTU1fQ.7Bk8mDzZEjGv_Af99UWsc5JzxzkgX094zMDBbI59bEI",
 									"type": "string"
 								}
 							]
@@ -1589,7 +1823,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"song\": \"6736154847869528fca721bf\",\r\n  \"text\": \"This is a great song!\",\r\n  \"duration\": 180                    \r\n}\r\n",
+							"raw": "{\r\n  \"song\": \"6736154847869528fca721bf\",\r\n  \"text\": \"This is a great song 2!\",\r\n  \"duration\": 180                    \r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1650,36 +1884,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/comments/67372975aefe8b3fd30b863b",
+							"raw": "{{URL}}/comments/675b261347a3cbdd57bab94b",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"comments",
-								"67372975aefe8b3fd30b863b"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Import data",
-			"item": [
-				{
-					"name": "Import songs",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/songs/import-data",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"songs",
-								"import-data"
+								"675b261347a3cbdd57bab94b"
 							]
 						}
 					},
